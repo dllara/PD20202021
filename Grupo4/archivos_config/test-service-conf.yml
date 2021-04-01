@@ -1,0 +1,25 @@
+http:
+  routers:
+    #http://127.0.0.1/alcocer-autores/autores
+    #http://127.0.0.1/alcocer-libros/libros
+    router-grupo04:
+      entryPoints:
+      - web
+      service: grupo04Principal
+      rule: PathPrefix(`/grupo04`)
+      middlewares:
+      - grupo04-stripprefix
+
+
+  middlewares:
+    grupo04-stripprefix:
+       stripPrefix:
+         prefixes:
+         - /grupo04-autores
+
+  services:
+    grupo04Principal:
+      loadBalancer:
+        servers:
+        - url: http://localhost:9091/
+        - url: http://localhost:9092/     

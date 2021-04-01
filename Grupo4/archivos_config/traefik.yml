@@ -1,0 +1,30 @@
+entryPoints:
+
+  web:
+    address: ":80"
+    
+providers:
+  file:
+    filename: "test-service-conf.yml"
+    watch: true
+  consulCatalog:
+    refreshInterval: 10s
+    endpoint:
+      address: 127.0.0.1:8500
+    
+api:
+  insecure: true
+  dashboard: true
+  
+log:
+  level: INFO
+  filePath: logs/traefik.json.log
+#  format: json     
+  
+accessLog:
+  filePath: logs/access.json.log
+#  format: json
+
+metrics:
+  prometheus: true
+    

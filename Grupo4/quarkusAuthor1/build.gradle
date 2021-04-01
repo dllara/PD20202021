@@ -1,0 +1,33 @@
+plugins {
+    id 'java-library'
+    id 'io.quarkus' version '1.12.0.Final'
+}
+
+repositories {
+    jcenter()
+}
+
+ext {
+quarkusVersion= '1.12.0.Final'
+} 
+
+dependencies {
+    implementation enforcedPlatform("io.quarkus:quarkus-universe-bom:${quarkusVersion}")
+    //config
+    //implementation group: 'org.microprofile-ext.config-ext', name: 'configsource-consul', version: '1.0.11'
+	//register
+	compile "com.ecwid.consul:consul-api:1.4.5"
+	//metrics
+	implementation group: 'io.quarkus', name: 'quarkus-smallrye-metrics', version: '1.12.0.Final'
+	//health
+	implementation group: 'io.quarkus', name: 'quarkus-smallrye-health', version: '1.12.0.Final'
+	//base
+	implementation group: 'io.quarkus', name: 'quarkus-jdbc-postgresql', version: '1.12.0.Final'
+	implementation group: 'io.quarkus', name: 'quarkus-agroal', version: '1.12.0.Final'
+	implementation group: 'io.quarkus', name: 'quarkus-hibernate-orm', version: '1.12.0.Final'
+	//app
+    implementation 'io.quarkus:quarkus-resteasy'
+    implementation group: 'io.quarkus', name: 'quarkus-resteasy-jackson'	
+	implementation group: 'io.quarkus', name: 'quarkus-rest-client', version: '1.12.0.Final'
+		
+}
